@@ -1,0 +1,4 @@
+file	condition	replicate_num	total_mass	norm_mass	internal_scale	external_scale
+./N0031_thout/accepted_hits.bam	N0031	0	3.55643e+06	5.14538e+06	0.592843	1
+./N0145_thout/accepted_hits.bam	N0145	0	3.51621e+06	5.14538e+06	0.575938	1
+./N0153_thout/accepted_hits.bam	N0153	0	9.72377e+06	5.14538e+06	2.91796	1

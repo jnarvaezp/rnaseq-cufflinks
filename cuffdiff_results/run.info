@@ -1,0 +1,5 @@
+param	value
+cmd_line	cuffdiff -m -s -o diff_out -b GCF_000195955.2_ASM19595v2_genomic.fa -p 24 -L N0031,N0145,N0153 -u merged_asm/merged.gtf ./N0031_thout/accepted_hits.bam ./N0145_thout/accepted_hits.bam ./N0153_thout/accepted_hits.bam 
+version	2.2.1
+SVN_revision	
+boost_version	105500
