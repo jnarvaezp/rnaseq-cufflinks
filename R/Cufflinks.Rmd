@@ -1,0 +1,123 @@
+---
+title: "Cufflinks RNASeq MTB"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r}
+library(cummeRbund)
+```
+
+
+```{r}
+cuffdata <- readCufflinks("/Users/gururea/Bioinformatica/diff_out/")
+runInfo(cuffdata)
+
+```
+
+```{r}
+csDensity(genes(cuffdata))
+```
+
+```{r}
+csScatter(genes(cuffdata), 'N0031', 'N0145')
+csScatter(genes(cuffdata), 'N0031', 'N0153')
+```
+
+```{r}
+csVolcano(genes(cuffdata), 'N0031', 'N0145')
+csVolcanoMatrix(genes(cuffdata))
+```
+
+```{r}
+csBoxplot(genes(cuffdata))
+csBoxplot(genes(cuffdata),replicates=T)
+```
+
+```{r}
+csScatterMatrix(genes(cuffdata))
+```
+
+```{r}
+csDendro(genes(cuffdata))
+```
+
+```{r}
+sigGeneIds<-getSig(cuffdata,alpha=0.05,level="genes")
+head(sigGeneIds)
+length(sigGeneIds)
+```
+
+```{r}
+dispersionPlot(genes(cuffdata))
+```
+
+```{r}
+sigGeneIds
+```
+
+
+
+```{r}
+sig_genes	=	getGenes(cuffdata,	sig_gene_data$gene_id)
+csHeatmap(sig_genes,	cluster='both')
+
+```
+```{r}
+gene_diff_data = diffData(genes(cuffdata))
+nrow(gene_diff_data)
+write.table(sig_gene_data,	'sig_diff_genes.txt',	sep	=	'\t',	quote	=	F)
+ex_gene_id = sig_gene_data$gene_id[1]
+ex_gene_id
+ex_gene	=	getGene(cuffdata,	ex_gene_id)
+expressionBarplot(ex_gene,	logMode=T,	showErrorbars=F)
+```
+
+```{r}
+isoforms.scv<-fpkmSCVPlot(isoforms(cuffdata))
+genes.scv<-fpkmSCVPlot(genes(cuffdata))
+replicates(cuffdata)
+```
+
+```{r}
+gene.features<-annotation(genes(cuffdata))
+head(gene.features)
+```
+
+```{r}
+gene.fpkm<-fpkm(genes(cuffdata))
+head(gene.fpkm)
+```
+
+```{r}
+gene.repFpkm<-repFpkm(genes(cuffdata))
+head(gene.repFpkm)
+```
+
+```{r}
+gene.counts<-count(genes(cuffdata))
+head(gene.counts)
+```
+
+```{r}
+isoform.fpkm<-fpkm(isoforms(cuffdata))
+head(isoform.fpkm)
+```
+
+```{r}
+gene.diff<-diffData(genes(cuffdata))
+head(gene.diff)
+```
+
+```{r}
+csHeatmap(sig_genes,cluster='both')
+```
+
+```{r}
+expressionBarplot(sig_genes)
+```
+
+```{r}
+expressionPlot(sig_genes)
+```
